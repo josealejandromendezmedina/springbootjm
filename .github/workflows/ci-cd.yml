@@ -30,7 +30,7 @@ jobs:
       id: fetch-secrets
       uses: LanceMcCarthy/akeyless-action@v3.1.1
       with:
-        access-id: ${{ secrets.ACCESS_ID }}
+        access-id: ${{ secrets.ACCESS_ID}}
         api-url: 'https://cm.jmendeztech.click/akeyless-api/'
         access-type: 'aws_iam'
         static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
