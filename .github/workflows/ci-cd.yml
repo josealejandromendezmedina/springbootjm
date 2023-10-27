@@ -6,7 +6,7 @@ on:
 
 jobs:
   static_secrets:
-    runs-on: 'self-hosted'
+    runs-on: ubuntu-latest
     name: Fetch static secrets
     permissions: 
       id-token: write
@@ -37,7 +37,7 @@ jobs:
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
-        access-type: 'aws_iam'
+        #access-type: 'aws_iam'
         static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Deploy to Remote Docker
