@@ -24,7 +24,7 @@ jobs:
         mvn clean package
 
     - name: Build Docker Image
-      run: docker build -t spring-boot-ms-sql .
+      run: docker build -t spring-boot-ms-sql -f DBSearcher/Dockerfile .
 
     - name: Deploy to Remote Docker
       env:
