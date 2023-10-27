@@ -6,41 +6,33 @@ on:
 
 jobs:
   static_secrets:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Fetch static secrets
-    permissions: 
-      id-token: write
-      contents: read
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    
     - name: Fetch secrets from aKeyless
       id: fetch-secrets
       uses: LanceMcCarthy/akeyless-action@v3.3.16
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
-        #access-type: 'aws_iam'
+        access-type: 'aws_iam'
         static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
-        
+
+    - name: Checkout Code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
     - name: Set Up Java
       uses: actions/setup-java@v2
       with:
         java-version: '11'
         distribution: 'temurin'
-
     - name: Build with Maven
       run: |
         cd DBSearcher
         mvn clean package
-
     - name: Build Docker Image
       run: docker build -t spring-boot-ms-sql -f DBSearcher/Dockerfile .
-
-
     - name: Deploy to Remote Docker
       env:
         SSH_PRIVATE_KEY: ${{ steps.fetch-secrets.outputs.PRIVATE_KEY }}
