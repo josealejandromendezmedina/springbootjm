@@ -7,6 +7,7 @@ on:
 jobs:
   build:
     runs-on: self-hosted
+    
     permissions: 
       id-token: write
       contents: read
@@ -35,7 +36,7 @@ jobs:
       with:
         access-id: ${{ secrets.ACCESS_ID}}
         api-url: 'https://cm.jmendeztech.click/akeyless-api/'
-        access-type: 'aws_iam'
+        access-type: 'jwt'
         static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Deploy to Remote Docker
