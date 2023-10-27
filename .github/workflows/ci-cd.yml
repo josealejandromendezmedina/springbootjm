@@ -5,16 +5,17 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  static_secrets:
     runs-on: ubuntu-latest
     name: Fetch static secrets
     permissions: 
       id-token: write
       contents: read
-
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Set Up Java
       uses: actions/setup-java@v2
@@ -32,12 +33,12 @@ jobs:
     
     - name: Fetch secrets from aKeyless
       id: fetch-secrets
-      uses: LanceMcCarthy/akeyless-action@main
+      uses: ./
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
        # access-type: 'aws_iam'
-        static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
+        static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Deploy to Remote Docker
       env:
