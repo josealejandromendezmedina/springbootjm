@@ -36,7 +36,6 @@ jobs:
       with:
         access-id: ${{ secrets.ACCESS_ID}}
         api-url: 'https://cm.jmendeztech.click/akeyless-api/'
-        access-type: 'jwt'
         static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Deploy to Remote Docker
