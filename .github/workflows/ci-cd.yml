@@ -11,7 +11,7 @@ jobs:
     steps:
     - name: Fetch secrets from aKeyless
       id: fetch-secrets
-      uses: LanceMcCarthy/akeyless-action@v3.3.16
+      uses: LanceMcCarthy/akeyless-action@v3
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
