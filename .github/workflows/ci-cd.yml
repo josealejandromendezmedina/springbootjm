@@ -24,9 +24,9 @@ jobs:
         access-id: ${{ secrets.ACCESS_ID }}
         #api-url: 'https://cm.jmendeztech.click/akeyless-api'
         #access-type: 'aws_iam'
-        static-secrets-1: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEY"}'
-        static-secrets-2: '{"/springbootdeploy/DOCKER_HOST":"DOCKER_HOST"}'
-        static-secrets-3: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAME"}'
+        static-secrets-1: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEYak"}'
+        static-secrets-2: '{"/springbootdeploy/DOCKER_HOST":"DOCKER_HOSTak"}'
+        static-secrets-3: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAMEak"}'
         
     - name: Set Up Java
       uses: actions/setup-java@v2
@@ -45,9 +45,9 @@ jobs:
 
     - name: Deploy to Remote Docker
       env:
-        SSH_PRIVATE_KEY: ${{ steps.fetch-secrets.outputs.PRIVATE_KEY }}
-        DOCKER_HOST: ${{ steps.fetch-secrets.outputs.DOCKER_HOST }}
-        DOCKER_USERNAME: ${{ steps.fetch-secrets.outputs.DOCKER_USERNAME }}
+        SSH_PRIVATE_KEY: ${{ steps.fetch-secrets.outputs.PRIVATE_KEYak }}
+        DOCKER_HOST: ${{ steps.fetch-secrets.outputs.DOCKER_HOSTak }}
+        DOCKER_USERNAME: ${{ steps.fetch-secrets.outputs.DOCKER_USERNAMEak }}
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
