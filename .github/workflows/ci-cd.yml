@@ -1,20 +1,19 @@
 name: CI/CD Pipeline
-
-on:
-  push:
-    branches: [ main ]
-
+on: push:
+     
 jobs:
   static_secrets:
     runs-on: self-hosted
+    name: Fetch static secrets
+    
     permissions: 
       id-token: write
       contents: read    
-    name: Fetch static secrets
+
     steps:
     - name: Fetch secrets from aKeyless
       id: fetch-secrets
-      uses: LanceMcCarthy/akeyless-action@v3
+      uses: LanceMcCarthy/akeyless-action@v3.1.1
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
