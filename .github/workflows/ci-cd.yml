@@ -33,7 +33,7 @@ jobs:
     
     - name: Fetch secrets from aKeyless
       id: fetch-secrets
-      uses: LanceMcCarthy/akeyless-action@main
+      uses: LanceMcCarthy/akeyless-action@3.3.16
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
