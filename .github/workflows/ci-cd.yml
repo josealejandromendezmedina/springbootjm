@@ -35,6 +35,7 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
         scp -o StrictHostKeyChecking=no -i private_key.pem DBSearcher/target/spring-boot-ms-sql-1.0-SNAPSHOT.war "$DOCKER_USERNAME"@"$DOCKER_HOST":/home/"$DOCKER_USERNAME"/
+        scp -o StrictHostKeyChecking=no -i private_key.pem DBSearcher/Dockerfile "$DOCKER_USERNAME"@"$DOCKER_HOST":/home/"$DOCKER_USERNAME"/
         ssh -o StrictHostKeyChecking=no -i private_key.pem "$DOCKER_USERNAME"@"$DOCKER_HOST" "docker build -t spring-boot-ms-sql ."
         ssh -o StrictHostKeyChecking=no -i private_key.pem "$DOCKER_USERNAME"@"$DOCKER_HOST" "docker stop spring-boot-ms-sql || true"
         ssh -o StrictHostKeyChecking=no -i private_key.pem "$DOCKER_USERNAME"@"$DOCKER_HOST" "docker run -d --name spring-boot-ms-sql -p 8080:8080 spring-boot-ms-sql"
