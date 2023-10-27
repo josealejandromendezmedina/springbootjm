@@ -16,9 +16,9 @@ jobs:
       uses: LanceMcCarthy/akeyless-action@v3.1.1
       with:
         access-id: ${{ secrets.ACCESS_ID }}
-        api-url: 'https://cm.jmendeztech.click/akeyless-api'
+        #api-url: 'https://cm.jmendeztech.click/akeyless-api'
         #access-type: 'aws_iam'
-        static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
+        static-secrets: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEY"}'
 
     - name: Use Outputs
       run: |
