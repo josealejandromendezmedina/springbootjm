@@ -61,9 +61,9 @@ jobs:
 
     - name: Deploy to Remote Docker
       env:
-        SSH_PRIVATE_KEY: ${{ steps.fetch-secrets.outputs.PRIVATE_KEYak }}
-        DOCKER_HOST: ${{ steps.fetch-secrets.outputs.DOCKER_HOSTak }}
-        DOCKER_USERNAME: ${{ steps.fetch-secrets.outputs.DOCKER_USERNAMEak }}
+        SSH_PRIVATE_KEY: ${{ steps.fetch-secrets-1.outputs.PRIVATE_KEYak }}
+        DOCKER_HOST: ${{ steps.fetch-secrets.outputs-2.DOCKER_HOSTak }}
+        DOCKER_USERNAME: ${{ steps.fetch-secrets-3.outputs.DOCKER_USERNAMEak }}
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key.pem
         chmod 600 private_key.pem
