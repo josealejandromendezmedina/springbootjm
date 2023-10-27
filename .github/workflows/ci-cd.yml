@@ -17,17 +17,33 @@ jobs:
       with:
         fetch-depth: 0
     
-    - name: Fetch secrets from aKeyless
-      id: fetch-secrets
+    - name: Fetch secrets from aKeyless SSH-PRIVATE-KEY
+      id: fetch-secrets-1
       uses: LanceMcCarthy/akeyless-action@v3.3.16
       with:
         access-id: ${{ secrets.ACCESS_ID }}
         #api-url: 'https://cm.jmendeztech.click/akeyless-api'
         #access-type: 'aws_iam'
-        static-secrets-1: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEYak"}'
-        static-secrets-2: '{"/springbootdeploy/DOCKER_HOST":"DOCKER_HOSTak"}'
-        static-secrets-3: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAMEak"}'
-        
+        static-secrets: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEYak"}'
+
+    - name: Fetch secrets from aKeyless DOCKER_HOST
+      id: fetch-secrets-2
+      uses: LanceMcCarthy/akeyless-action@v3.3.16
+      with:
+        access-id: ${{ secrets.ACCESS_ID }}
+        #api-url: 'https://cm.jmendeztech.click/akeyless-api'
+        #access-type: 'aws_iam'
+        static-secrets: '{"/springbootdeploy/DOCKER_HOST":"DOCKER_HOSTak"}'
+
+    - name: Fetch secrets from aKeyless DOCKER_USERNAME
+      id: fetch-secrets-3
+      uses: LanceMcCarthy/akeyless-action@v3.3.16
+      with:
+        access-id: ${{ secrets.ACCESS_ID }}
+        #api-url: 'https://cm.jmendeztech.click/akeyless-api'
+        #access-type: 'aws_iam'
+        static-secrets: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAMEak"}'
+              
     - name: Set Up Java
       uses: actions/setup-java@v2
       with:
