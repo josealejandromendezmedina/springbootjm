@@ -16,7 +16,16 @@ jobs:
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
-
+    
+    - name: Fetch secrets from aKeyless
+      id: fetch-secrets
+      uses: LanceMcCarthy/akeyless-action@v3.3.16
+      with:
+        access-id: ${{ secrets.ACCESS_ID }}
+        api-url: 'https://cm.jmendeztech.click/akeyless-api'
+        #access-type: 'aws_iam'
+        static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
+        
     - name: Set Up Java
       uses: actions/setup-java@v2
       with:
@@ -30,15 +39,7 @@ jobs:
 
     - name: Build Docker Image
       run: docker build -t spring-boot-ms-sql -f DBSearcher/Dockerfile .
-    
-    - name: Fetch secrets from aKeyless
-      id: fetch-secrets
-      uses: LanceMcCarthy/akeyless-action@v3.3.16
-      with:
-        access-id: ${{ secrets.ACCESS_ID }}
-        #api-url: 'https://cm.jmendeztech.click/akeyless-api'
-        #access-type: 'aws_iam'
-        static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
+
 
     - name: Deploy to Remote Docker
       env:
