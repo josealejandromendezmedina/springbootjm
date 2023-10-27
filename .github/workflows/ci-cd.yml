@@ -33,9 +33,9 @@ jobs:
       id: fetch-secrets
       uses: LanceMcCarthy/akeyless-action@main
       with:
-        access-id: ${{ secrets.ACCESS_ID}}
+        access-id: ${{ secrets.ACCESS_ID }}
         api-url: 'https://cm.jmendeztech.click/akeyless-api'
-        access-type: 'aws_iam'
+       # access-type: 'aws_iam'
         static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Deploy to Remote Docker
