@@ -5,6 +5,12 @@ on:
     branches: [ main ]
 
 jobs:
+  my_job:
+    #---------Required---------#
+    permissions: 
+      id-token: write
+      contents: read
+    #--------------------------#
   build:
     runs-on: self-hosted
 
@@ -30,7 +36,7 @@ jobs:
       id: fetch-secrets
       uses: LanceMcCarthy/akeyless-action@v3.5.0
       with:
-        access-id: 'p-er74how3fljcwm'
+        access-id: ${{ secrets.ACCESS_ID}}
         api-url: 'https://cm.jmendeztech.click/akeyless-api/'
         access-type: 'aws_iam'
         static-secrets: '{"springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
