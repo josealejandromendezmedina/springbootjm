@@ -5,14 +5,11 @@ on:
     branches: [ main ]
 
 jobs:
-  my_job:
-    #---------Required---------#
+  build:
+    runs-on: self-hosted
     permissions: 
       id-token: write
       contents: read
-    #--------------------------#
-  build:
-    runs-on: self-hosted
 
     steps:
     - name: Checkout Code
