@@ -22,5 +22,5 @@ jobs:
         static-secrets: '{"/springbootdeploy/ssh-privatekey":"PRIVATE_KEY"}'
 
     - name: Use Outputs
-       run: |
+      run: |
         echo "PRIVATE_KEY: ${{ steps.fetch-secrets.outputs.PRIVATE_KEY }}"
