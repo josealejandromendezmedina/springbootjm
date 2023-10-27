@@ -24,9 +24,9 @@ jobs:
         access-id: ${{ secrets.ACCESS_ID }}
         #api-url: 'https://cm.jmendeztech.click/akeyless-api'
         #access-type: 'aws_iam'
-        static-secrets: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEY"}'
-        static-secrets: '{"/springbootdeploy/DOCKER_HOST":"PRIVATE_KEY"}'
-        static-secrets: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAME"}'
+        static-secrets-1: '{"/springbootdeploy/SSH-PRIVATE-KEY":"PRIVATE_KEY"}'
+        static-secrets-2: '{"/springbootdeploy/DOCKER_HOST":"PRIVATE_KEY"}'
+        static-secrets-3: '{"/springbootdeploy/DOCKER_USERNAME":"DOCKER_USERNAME"}'
         
     - name: Set Up Java
       uses: actions/setup-java@v2
