@@ -24,7 +24,7 @@ public class CcInformationController {
     @GetMapping
     public ResponseEntity<List<CcInformation>> getAllCcInformation() {
     	
-    	System.out.println("SEARCHING FOR DATA!!");
+    	
     	
         List<CcInformation> ccInformationList = ccInformationService.getAllCcInformation();
         return ResponseEntity.ok(ccInformationList);
